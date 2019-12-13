@@ -9473,9 +9473,47 @@ function (_Component) {
       });
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "handleCreatUser", function (e) {
+      //const { newUser } = this.state
+      _this.setState(Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])({}, e.target.name, e.target.value));
+
+      var newUser = {
+        id: _this.state.id,
+        name: _this.state.name,
+        username: _this.state.username
+      };
+
+      _this.setState({
+        newUser: newUser
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "buCreateUser", function (event) {
+      event.preventDefault();
+      var _this$state = _this.state,
+          newUser = _this$state.newUser,
+          users = _this$state.users;
+      users.push(newUser);
+
+      _this.setState({
+        users: users
+      });
+
+      console.log(newUser);
+    });
+
     _this.state = {
       users: [],
-      last_edited_user: null
+      last_edited_user: null,
+      showCreateUserForm: false,
+      id: null,
+      name: null,
+      username: null,
+      newUser: {
+        id: null,
+        name: null,
+        username: null
+      }
     };
     return _this;
   }
@@ -9498,47 +9536,143 @@ function (_Component) {
       return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_8__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 73
         },
         __self: this
-      }, users.map(function (user, i) {
+      }, __jsx("div", {
+        style: {
+          position: "absolute",
+          width: "300px",
+          height: "120px",
+          marginLeft: '50%',
+          padding: '100px'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 74
+        },
+        __self: this
+      }, __jsx("button", {
+        onClick: function onClick() {
+          _this2.setState({
+            showCreateUserForm: true
+          });
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 75
+        },
+        __self: this
+      }, " create new User "), this.state.showCreateUserForm && __jsx("form", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 76
+        },
+        __self: this
+      }, __jsx("label", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77
+        },
+        __self: this
+      }, "id"), __jsx("input", {
+        type: "text",
+        name: "id",
+        onChange: function onChange(e) {
+          _this2.handleCreatUser(e);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77
+        },
+        __self: this
+      }), __jsx("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77
+        },
+        __self: this
+      }), __jsx("label", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78
+        },
+        __self: this
+      }, "Name"), __jsx("input", {
+        type: "text",
+        name: "name",
+        onChange: function onChange(e) {
+          _this2.handleCreatUser(e);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78
+        },
+        __self: this
+      }), __jsx("label", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 79
+        },
+        __self: this
+      }, "User Name"), __jsx("input", {
+        type: "text",
+        name: "username",
+        onChange: function onChange(e) {
+          _this2.handleCreatUser(e);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 79
+        },
+        __self: this
+      }), __jsx("input", {
+        type: "submit",
+        value: "Submit",
+        onClick: this.buCreateUser,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 80
+        },
+        __self: this
+      }))), users.map(function (user, i) {
         return __jsx("div", {
           key: i,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 46
+            lineNumber: 85
           },
           __self: this
         }, __jsx("h3", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 47
+            lineNumber: 86
           },
           __self: this
-        }, "Name : ", user.name, " "), __jsx("p", {
+        }, "Name : ", user.name, " "), __jsx("h4", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 48
+            lineNumber: 87
           },
           __self: this
         }, "User Name : ", user.username), __jsx(reactjs_popup__WEBPACK_IMPORTED_MODULE_10__["default"], {
           trigger: __jsx("button", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 51
+              lineNumber: 90
             },
             __self: this
           }, "update user name"),
           position: "right center",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 51
+            lineNumber: 90
           },
           __self: this
         }, __jsx("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 53
+            lineNumber: 92
           },
           __self: this
         }, __jsx("textarea", {
@@ -9547,13 +9681,13 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 54
+            lineNumber: 93
           },
           __self: this
         }, user.username)), __jsx("button", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 56
+            lineNumber: 95
           },
           __self: this
         }, "save")), __jsx("button", {
@@ -9562,7 +9696,7 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 59
+            lineNumber: 98
           },
           __self: this
         }, " delete user"));
@@ -9606,7 +9740,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 0:
 /*!*******************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fusers&absolutePagePath=C%3A%5CUsers%5Csitekey%5CDesktop%5Cadmin-dashboard%5Cpages%5Cusers.js ***!
   \*******************************************************************************************************************************************/
@@ -9629,5 +9763,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=users.js.map

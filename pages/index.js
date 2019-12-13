@@ -90,14 +90,14 @@ class Index extends Component {
 
         return (
             <Layout>
-            <div style={  {position : "absolute", width: "300px",height: "120px", marginLeft: '50%'}  }>   
-            <button > create new post </button>
-            <form>
-               <label>id</label><input  type="text" name="id" onChange={(e)=>{ this.creatPost(e) }}  />
-                <label>title</label><input  type="text" name="title" onChange={(e)=>{ this.creatPost(e) }} />
-                <textarea name="body" onChange={(e)=>{ this.creatPost(e) }} ></textarea>
-                <input type="submit" value="Submit"  onClick={ this.buCreatePost }/>
-            </form>
+           <div style={  {position : "absolute", width: "300px",height: "120px", marginLeft: '50%', padding: '100px'}  }>   
+             <button onClick={ ()=>{ this.setState({ showCreatePostForm: true }) } }> create new post </button>
+            { this.state.showCreatePostForm  && <form >
+               <label >id</label><input  type="text" name="id" onChange={(e)=>{ this.creatPost(e) }}  /><br></br>
+                <label >title</label><input  type="text" name="title" onChange={(e)=>{ this.creatPost(e) }}   />
+                <textarea name="body" onChange={(e)=>{ this.creatPost(e) }} style={  {padding: '20px'}  }></textarea>
+                <input type="submit" value="Submit"  onClick={ this.buCreatePost } />
+               </form> }
             </div>
                 <div style={  {position : "absolute", width: "300px",height: "120px"}   }>
                    {
@@ -110,7 +110,7 @@ class Index extends Component {
             <Popup trigger={<button onClick={() => this.updatePost(post)}>update</button>}
                         position="right center">
                         <div>
-                            <textarea onChange={(e) => this.handleChange(e, post)}>{post.body}</textarea>
+                            <textarea onChange={(e) => this.handleChange(e, post)} style={  {padding: '40px'}  }>{post.body}</textarea>
                         </div>
                          <button  onClick={this.submitPost }>save</button>
             </Popup>

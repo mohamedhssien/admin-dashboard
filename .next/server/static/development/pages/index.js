@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2014,40 +2014,156 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/layout */ "./components/layout.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/layout */ "./components/layout.js");
+/* harmony import */ var reactjs_popup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactjs-popup */ "reactjs-popup");
+/* harmony import */ var reactjs_popup__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactjs_popup__WEBPACK_IMPORTED_MODULE_3__);
+
 var _jsxFileName = "C:\\Users\\sitekey\\Desktop\\admin-dashboard\\pages\\comments.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-class Commonts extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+
+class Commonts extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(props) {
     super(props);
-    this.state = {};
-  } // static async getInitialProps(){
-  //     const res = await fetch('http://jsonplaceholder.typicode.com/posts');
-  //     const data = await res.json();
-  //     return { posts: data }
-  // }
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "handleChange", (e, comment) => {
+      comment.body = e.target.value;
+      this.setState({
+        updatedComment: comment
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "submitComment", () => {
+      this.setState({
+        editOne: null
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "deleteComment", (e, comment, i) => {
+      const {
+        comments
+      } = this.state;
+      console.log(comment.id);
+      comments.splice(i, 1);
+      this.setState({
+        comments
+      });
+    });
+
+    this.state = {
+      comments: [],
+      editOne: null,
+      updatedComment: null
+    };
+  }
+
+  componentDidMount() {
+    let {
+      comments
+    } = this.props;
+    this.setState({
+      comments: comments
+    });
+  }
+
+  updateComment(comment) {
+    this.setState({
+      editOne: comment.id
+    });
+  }
+
+  static async getInitialProps() {
+    const res = await fetch('http://jsonplaceholder.typicode.com/comments');
+    const data = await res.json();
+    console.log(data);
+    return {
+      comments: data
+    };
+  }
 
   render() {
-    console.log(this.state.posts);
-    return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    console.log(this.state.comments);
+    return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 57
       },
       __self: this
-    }, __jsx("h1", {
+    }, __jsx("div", {
+      style: {
+        position: "absolute",
+        width: "300px",
+        height: "120px"
+      },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 59
       },
       __self: this
-    }, " comments page "));
+    }, this.state.comments.length > 0 && this.state.comments.map((comment, i) => __jsx("div", {
+      key: i,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 62
+      },
+      __self: this
+    }, " ", comment.body, " ", __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 62
+      },
+      __self: this
+    }), __jsx(reactjs_popup__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      trigger: __jsx("button", {
+        onClick: () => this.updateComment(comment),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 63
+        },
+        __self: this
+      }, "update"),
+      position: "right center",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 63
+      },
+      __self: this
+    }, __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 65
+      },
+      __self: this
+    }, __jsx("textarea", {
+      onChange: e => this.handleChange(e, comment),
+      style: {
+        padding: '40px'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 66
+      },
+      __self: this
+    }, comment.body)), __jsx("button", {
+      onClick: this.submitComment,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 68
+      },
+      __self: this
+    }, "save")), __jsx("button", {
+      onClick: e => this.deleteComment(e, comment, i),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 70
+      },
+      __self: this
+    }, " delete ")))));
   }
 
 }
@@ -2206,7 +2322,8 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
         position: "absolute",
         width: "300px",
         height: "120px",
-        marginLeft: '50%'
+        marginLeft: '50%',
+        padding: '100px'
       },
       __source: {
         fileName: _jsxFileName,
@@ -2214,12 +2331,17 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       },
       __self: this
     }, __jsx("button", {
+      onClick: () => {
+        this.setState({
+          showCreatePostForm: true
+        });
+      },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 94
       },
       __self: this
-    }, " create new post "), __jsx("form", {
+    }, " create new post "), this.state.showCreatePostForm && __jsx("form", {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 95
@@ -2237,6 +2359,12 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       onChange: e => {
         this.creatPost(e);
       },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 96
+      },
+      __self: this
+    }), __jsx("br", {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 96
@@ -2263,6 +2391,9 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       name: "body",
       onChange: e => {
         this.creatPost(e);
+      },
+      style: {
+        padding: '20px'
       },
       __source: {
         fileName: _jsxFileName,
@@ -2331,6 +2462,9 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       __self: this
     }, __jsx("textarea", {
       onChange: e => this.handleChange(e, post),
+      style: {
+        padding: '40px'
+      },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 113
@@ -2359,7 +2493,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
