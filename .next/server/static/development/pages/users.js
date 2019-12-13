@@ -113,7 +113,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const Layout = props => __jsx("div", {
   style: {
-    marginBottom: 50
+    marginBottom: 20
   },
   __source: {
     fileName: _jsxFileName,
@@ -2039,6 +2039,17 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       });
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "deleteUser", (e, user, i) => {
+      const {
+        users
+      } = this.state;
+      console.log(user.id);
+      users.splice(i, 1);
+      this.setState({
+        users: users
+      });
+    });
+
     this.state = {
       users: [],
       last_edited_user: null
@@ -2070,62 +2081,69 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
     return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37
+        lineNumber: 43
       },
       __self: this
     }, users.map((user, i) => __jsx("div", {
       key: i,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40
+        lineNumber: 46
       },
       __self: this
     }, __jsx("h3", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 41
+        lineNumber: 47
       },
       __self: this
     }, "Name : ", user.name, " "), __jsx("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 48
       },
       __self: this
     }, "User Name : ", user.username), __jsx(reactjs_popup__WEBPACK_IMPORTED_MODULE_3___default.a, {
       trigger: __jsx("button", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 51
         },
         __self: this
       }, "update user name"),
       position: "right center",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 51
       },
       __self: this
     }, __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 53
       },
       __self: this
     }, __jsx("textarea", {
       onChange: e => this.handleChange(e, user),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 54
       },
       __self: this
     }, user.username)), __jsx("button", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 56
       },
       __self: this
-    }, "save")))));
+    }, "save")), __jsx("button", {
+      onClick: e => this.deleteUser(e, user, i),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 59
+      },
+      __self: this
+    }, " delete user"))));
   }
 
 }

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 const Layout = (props) => ( 
 
-    <div  style=  { {marginBottom: 50} } >
+    <div  style=  { {marginBottom: 20} } >
         
         <Link href="/" ><a style=  { {padding: 20} }>manage Posts</a></Link>
         <Link href="/users"><a style=  { {padding: 20} }>manage Users</a></Link>

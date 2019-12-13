@@ -113,7 +113,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const Layout = props => __jsx("div", {
   style: {
-    marginBottom: 50
+    marginBottom: 20
   },
   __source: {
     fileName: _jsxFileName,
@@ -2103,14 +2103,62 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "deletePost", (e, post) => {
-      console.log(post);
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "deletePost", (e, post, i) => {
+      const {
+        posts
+      } = this.state;
+      console.log(post.id);
+      posts.splice(i, 1);
+      this.setState({
+        posts: posts
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "creatPost", e => {
+      //const { newPost } = this.state.newPost
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+      const id = this.state.id;
+      const title = this.state.title;
+      const body = this.state.body;
+      const newPost = {
+        id: id,
+        title: title,
+        body: body
+      };
+      this.setState({
+        newPost: newPost
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "buCreatePost", event => {
+      event.preventDefault();
+      const {
+        posts,
+        newPost
+      } = this.state;
+      console.log(posts);
+      posts.push(newPost);
+      this.setState({
+        posts
+      });
+      console.log(newPost);
     });
 
     this.state = {
       posts: [],
+      title: null,
+      body: null,
+      id: null,
+      newPost: {
+        title: null,
+        body: null,
+        id: null
+      },
       editOne: null,
-      updatedPost: null
+      updatedPost: null,
+      showCreatePostForm: false
     };
   }
 
@@ -2150,38 +2198,114 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
     return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 92
       },
       __self: this
     }, __jsx("div", {
       style: {
         position: "absolute",
-        left: "150px",
+        width: "300px",
+        height: "120px",
+        marginLeft: '50%'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 93
+      },
+      __self: this
+    }, __jsx("button", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 94
+      },
+      __self: this
+    }, " create new post "), __jsx("form", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 95
+      },
+      __self: this
+    }, __jsx("label", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 96
+      },
+      __self: this
+    }, "id"), __jsx("input", {
+      type: "text",
+      name: "id",
+      onChange: e => {
+        this.creatPost(e);
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 96
+      },
+      __self: this
+    }), __jsx("label", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 97
+      },
+      __self: this
+    }, "title"), __jsx("input", {
+      type: "text",
+      name: "title",
+      onChange: e => {
+        this.creatPost(e);
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 97
+      },
+      __self: this
+    }), __jsx("textarea", {
+      name: "body",
+      onChange: e => {
+        this.creatPost(e);
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 98
+      },
+      __self: this
+    }), __jsx("input", {
+      type: "submit",
+      value: "Submit",
+      onClick: this.buCreatePost,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 99
+      },
+      __self: this
+    }))), __jsx("div", {
+      style: {
+        position: "absolute",
         width: "300px",
         height: "120px"
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 102
       },
       __self: this
     }, posts.map((post, i) => __jsx("div", {
       key: i,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 105
       },
       __self: this
     }, __jsx("h3", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 106
       },
       __self: this
     }, post.title, " "), __jsx("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 107
       },
       __self: this
     }, post.body), __jsx(reactjs_popup__WEBPACK_IMPORTED_MODULE_6___default.a, {
@@ -2189,41 +2313,41 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
         onClick: () => this.updatePost(post),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 110
         },
         __self: this
       }, "update"),
       position: "right center",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66
+        lineNumber: 110
       },
       __self: this
     }, __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 68
+        lineNumber: 112
       },
       __self: this
     }, __jsx("textarea", {
       onChange: e => this.handleChange(e, post),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 69
+        lineNumber: 113
       },
       __self: this
     }, post.body)), __jsx("button", {
       onClick: this.submitPost,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71
+        lineNumber: 115
       },
       __self: this
     }, "save")), __jsx("button", {
-      onClick: (e, post) => this.deletePost(e, post),
+      onClick: e => this.deletePost(e, post, i),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 73
+        lineNumber: 117
       },
       __self: this
     }, " delete ")))));

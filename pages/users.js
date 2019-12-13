@@ -29,6 +29,12 @@ class Users extends Component {
        this.setState({ last_edited_user: user })
 
     }
+    deleteUser = (e, user, i) => {
+        const { users } = this.state
+        console.log(user.id)
+        users.splice(i, 1);
+        this.setState({ users: users })
+    } 
 
     render() {
         let { users } = this.state
@@ -49,6 +55,9 @@ class Users extends Component {
                         </div>
                          <button >save</button>
             </Popup>
+
+            <button onClick={ (e) => this.deleteUser(e, user, i) }> delete user</button>    
+
                          </div>
                         ))
                     }
