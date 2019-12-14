@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2183,62 +2183,267 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/posts-page.js":
-/*!*****************************!*\
-  !*** ./pages/posts-page.js ***!
-  \*****************************/
+/***/ "./pages/comments.js":
+/*!***************************!*\
+  !*** ./pages/comments.js ***!
+  \***************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/layout */ "./components/layout.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_posts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/posts */ "./components/posts.js");
-/* harmony import */ var _redux_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../redux/store */ "./redux/store.js");
-var _jsxFileName = "C:\\Users\\sitekey\\Desktop\\admin-dashboard\\pages\\posts-page.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/layout */ "./components/layout.js");
+/* harmony import */ var reactjs_popup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactjs-popup */ "reactjs-popup");
+/* harmony import */ var reactjs_popup__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactjs_popup__WEBPACK_IMPORTED_MODULE_3__);
+
+var _jsxFileName = "C:\\Users\\sitekey\\Desktop\\admin-dashboard\\pages\\comments.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
 
-
-
-class PostsPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+class Commonts extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(props) {
     super(props);
-    this.state = {};
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "handleChange", (e, comment) => {
+      comment.body = e.target.value;
+      this.setState({
+        updatedComment: comment
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "submitComment", () => {
+      this.setState({
+        editOne: null
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "deleteComment", (e, comment, i) => {
+      const {
+        comments
+      } = this.state;
+      console.log(comment.id);
+      comments.splice(i, 1);
+      this.setState({
+        comments
+      });
+    });
+
+    this.state = {
+      comments: [],
+      editOne: null,
+      updatedComment: null
+    };
+  }
+
+  componentDidMount() {
+    let {
+      comments
+    } = this.props;
+    this.setState({
+      comments: comments
+    });
+  }
+
+  updateComment(comment) {
+    this.setState({
+      editOne: comment.id
+    });
+  }
+
+  static async getInitialProps() {
+    const res = await fetch('http://jsonplaceholder.typicode.com/comments');
+    const data = await res.json();
+    console.log(data);
+    return {
+      comments: data
+    };
   }
 
   render() {
-    return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
-      store: _redux_store__WEBPACK_IMPORTED_MODULE_4__["default"],
+    console.log(this.state.comments);
+    return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 57
       },
       __self: this
-    }, __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, __jsx("div", {
+      style: {
+        position: "absolute",
+        width: "300px",
+        height: "120px"
+      },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 59
       },
       __self: this
-    }, __jsx(_components_posts__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }, this.state.comments.length > 0 && this.state.comments.map((comment, i) => __jsx("div", {
+      key: i,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 62
       },
       __self: this
-    })));
+    }, " ", comment.body, " ", __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 62
+      },
+      __self: this
+    }), __jsx(reactjs_popup__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      trigger: __jsx("button", {
+        onClick: () => this.updateComment(comment),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 63
+        },
+        __self: this
+      }, "update"),
+      position: "right center",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 63
+      },
+      __self: this
+    }, __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 65
+      },
+      __self: this
+    }, __jsx("textarea", {
+      onChange: e => this.handleChange(e, comment),
+      style: {
+        padding: '40px'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 66
+      },
+      __self: this
+    }, comment.body)), __jsx("button", {
+      onClick: this.submitComment,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 68
+      },
+      __self: this
+    }, "save")), __jsx("button", {
+      onClick: e => this.deleteComment(e, comment, i),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 70
+      },
+      __self: this
+    }, " delete ")))));
   }
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (PostsPage);
+/* harmony default export */ __webpack_exports__["default"] = (Commonts);
+
+/***/ }),
+
+/***/ "./pages/index.js":
+/*!************************!*\
+  !*** ./pages/index.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/layout */ "./components/layout.js");
+/* harmony import */ var _comments__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comments */ "./pages/comments.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var reactjs_popup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactjs-popup */ "reactjs-popup");
+/* harmony import */ var reactjs_popup__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(reactjs_popup__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_posts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/posts */ "./components/posts.js");
+var _jsxFileName = "C:\\Users\\sitekey\\Desktop\\admin-dashboard\\pages\\index.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+
+
+
+class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
+  constructor(props) {
+    super(props); // this.state = {
+    //     posts : [],
+    //     title: null,
+    //     body: null, 
+    //     id: null,
+    //     newPost: {
+    //       title: null,
+    //       body: null, 
+    //       id: null,
+    //     },
+    //     editOne: null,
+    //     updatedPost : null,
+    //     showCreatePostForm: false
+    // }
+  } //  deletePost = (e, post, i) => {
+  //      const { posts } = this.state
+  //      console.log(post.id)
+  //      posts.splice(i, 1);
+  //      this.setState({ posts: posts })
+  //  } 
+  //  creatPost = (e) => {
+  //      //const { newPost } = this.state.newPost
+  //     this.setState({ [e.target.name] : e.target.value })
+  //     const  id = this.state.id
+  //     const title = this.state.title
+  //     const body = this.state.body
+  //     const newPost = {
+  //         id: id,
+  //         title: title,
+  //         body: body
+  //     }
+  //     this.setState({ newPost : newPost })
+  // }
+  // buCreatePost = (event) => {
+  //     event.preventDefault();
+  //     const { posts, newPost } = this.state
+  //     console.log(posts)
+  //     posts.push(newPost)
+  //     this.setState({ posts })
+  //     console.log(newPost)
+  //  }
+
+
+  render() {
+    return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 70
+      },
+      __self: this
+    }, __jsx("h1", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 80
+      },
+      __self: this
+    }, " please click the links above "));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),
 
@@ -2477,14 +2682,14 @@ const FETCH_POSTS = 'FETCH_POSTS';
 
 /***/ }),
 
-/***/ 6:
-/*!***********************************!*\
-  !*** multi ./pages/posts-page.js ***!
-  \***********************************/
+/***/ 5:
+/*!******************************!*\
+  !*** multi ./pages/index.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\sitekey\Desktop\admin-dashboard\pages\posts-page.js */"./pages/posts-page.js");
+module.exports = __webpack_require__(/*! C:\Users\sitekey\Desktop\admin-dashboard\pages\index.js */"./pages/index.js");
 
 
 /***/ }),
@@ -2632,6 +2837,17 @@ module.exports = require("core-js/library/fn/weak-map");
 
 /***/ }),
 
+/***/ "isomorphic-unfetch":
+/*!*************************************!*\
+  !*** external "isomorphic-unfetch" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("isomorphic-unfetch");
+
+/***/ }),
+
 /***/ "prop-types":
 /*!*****************************!*\
   !*** external "prop-types" ***!
@@ -2732,4 +2948,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=posts-page.js.map
+//# sourceMappingURL=index.js.map

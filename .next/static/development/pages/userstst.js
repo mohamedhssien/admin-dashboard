@@ -29,22 +29,6 @@ var Layout = function Layout(props) {
     },
     __self: this
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6
-    },
-    __self: this
-  }, __jsx("a", {
-    style: {
-      padding: 20
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6
-    },
-    __self: this
-  }, "manage Posts")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/comments",
     __source: {
       fileName: _jsxFileName,
