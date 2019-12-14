@@ -5,6 +5,7 @@ import Comments from './comments'
 import Link from 'next/link';
 import Popup from "reactjs-popup"
 
+
 class Index extends Component {
     constructor(props) {
         super(props)
@@ -85,6 +86,7 @@ class Index extends Component {
      }
 
     render() {
+        
         let {editOne, posts, updatedPost} = this.state;
         console.log('uuuuuu',updatedPost)
 
