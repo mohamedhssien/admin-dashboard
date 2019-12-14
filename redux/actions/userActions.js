@@ -1,6 +1,6 @@
 import { FETCH_USERS, NEW_USERS, LAST_UPDATE } from "../types";
 
-import { last_updated_user } from "../../components/users";
+// import { last_updated_user } from "../../components/users";
 
 export function fetchUsers() {
     return function(dispatch){

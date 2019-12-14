@@ -4,95 +4,96 @@ import Layout from '../components/layout'
 import Comments from './comments'
 import Link from 'next/link';
 import Popup from "reactjs-popup"
+import Posts from "../components/posts";
 
 
 class Index extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            posts : [],
+        // this.state = {
+        //     posts : [],
            
-            title: null,
-            body: null, 
-            id: null,
-            newPost: {
-              title: null,
-              body: null, 
-              id: null,
-            },
-            editOne: null,
-            updatedPost : null,
-            showCreatePostForm: false
-        }
+        //     title: null,
+        //     body: null, 
+        //     id: null,
+        //     newPost: {
+        //       title: null,
+        //       body: null, 
+        //       id: null,
+        //     },
+        //     editOne: null,
+        //     updatedPost : null,
+        //     showCreatePostForm: false
+        // }
     }
-    componentDidMount() {
-        let {posts} = this.props;
-        this.setState({posts});
-    }    
+    // componentDidMount() {
+    //     let {posts} = this.props;
+    //     this.setState({posts});
+    // }    
 
-    static async getInitialProps(){
-        const res = await fetch('http://jsonplaceholder.typicode.com/posts');
-        const data = await res.json();
-        return { posts: data }
-    }
+    // static async getInitialProps(){
+    //     const res = await fetch('http://jsonplaceholder.typicode.com/posts');
+    //     const data = await res.json();
+    //     return { posts: data }
+    // }
 
     
 
-    updatePost(post) {
-        let {editOne } = this.state;
-        this.setState({editOne : post.id});
-    }
+    // updatePost(post) {
+    //     let {editOne } = this.state;
+    //     this.setState({editOne : post.id});
+    // }
 
-    handleChange = (e, post) => {
-        post.body = e.target.value;
-        this.setState({updatedPost: post});
-    }
+    // handleChange = (e, post) => {
+    //     post.body = e.target.value;
+    //     this.setState({updatedPost: post});
+    // }
 
-    submitPost = () => {  
-        this.setState({  editOne: null })
-     } 
+    // submitPost = () => {  
+    //     this.setState({  editOne: null })
+    //  } 
 
-     deletePost = (e, post, i) => {
-         const { posts } = this.state
-         console.log(post.id)
-         posts.splice(i, 1);
-         this.setState({ posts: posts })
-     } 
+    //  deletePost = (e, post, i) => {
+    //      const { posts } = this.state
+    //      console.log(post.id)
+    //      posts.splice(i, 1);
+    //      this.setState({ posts: posts })
+    //  } 
 
-     creatPost = (e) => {
-         //const { newPost } = this.state.newPost
-        this.setState({ [e.target.name] : e.target.value })
-        const  id = this.state.id
-        const title = this.state.title
-        const body = this.state.body
-        const newPost = {
-            id: id,
-            title: title,
-            body: body
-        }
+    //  creatPost = (e) => {
+    //      //const { newPost } = this.state.newPost
+    //     this.setState({ [e.target.name] : e.target.value })
+    //     const  id = this.state.id
+    //     const title = this.state.title
+    //     const body = this.state.body
+    //     const newPost = {
+    //         id: id,
+    //         title: title,
+    //         body: body
+    //     }
 
-        this.setState({ newPost : newPost })
+    //     this.setState({ newPost : newPost })
         
-    }
+    // }
     
-    buCreatePost = (event) => {
-        event.preventDefault();
-        const { posts, newPost } = this.state
-        console.log(posts)
-        posts.push(newPost)
-        this.setState({ posts })
-        console.log(newPost)
-     }
+    // buCreatePost = (event) => {
+    //     event.preventDefault();
+    //     const { posts, newPost } = this.state
+    //     console.log(posts)
+    //     posts.push(newPost)
+    //     this.setState({ posts })
+    //     console.log(newPost)
+    //  }
 
     render() {
         
-        let {editOne, posts, updatedPost} = this.state;
-        console.log('uuuuuu',updatedPost)
+        // let {editOne, posts, updatedPost} = this.state;
+        // console.log('uuuuuu',updatedPost)
 
         return (
             <Layout>
-           <div style={  {position : "absolute", width: "300px",height: "120px", marginLeft: '50%', padding: '100px'}  }>   
+           {/* <div style={  {position : "absolute", width: "300px",height: "120px", marginLeft: '50%', padding: '100px'}  }>   
              <button onClick={ ()=>{ this.setState({ showCreatePostForm: true }) } }> create new post </button>
             { this.state.showCreatePostForm  && <form >
                <label >id</label><input  type="text" name="id" onChange={(e)=>{ this.creatPost(e) }}  /><br></br>
@@ -120,7 +121,9 @@ class Index extends Component {
                          </div>
                         ))
                     }
-                  </div>  
+
+                  </div>   */}
+                  {/* <Posts /> */}
         </Layout>
         )
     }

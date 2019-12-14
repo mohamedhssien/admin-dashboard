@@ -1,6 +1,6 @@
 import { FETCH_USERS, NEW_USERS, LAST_UPDATE } from "../types";
 //import { actions } from "../actions/userActions";
-import { last_updated_user } from "../../components/users";
+// import { last_updated_user } from "../../components/users";
 
 const initialState = {
     users: [],
