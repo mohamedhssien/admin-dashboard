@@ -546,10 +546,19 @@ function (_Component) {
       console.log(_this.state.last_edited_user);
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handleClickOpen", function () {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "deleteUser", function (e, user, i) {
+      console.log(i);
+      console.log(_this.props.users);
+
+      _this.props.users.splice(i, 1);
+
+      console.log(_this.props.users);
+
       _this.setState({
-        open: true
+        users: _this.props.users
       });
+
+      console.log(_this.state.users);
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handleClose", function () {
@@ -558,10 +567,34 @@ function (_Component) {
       });
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "updateUser", function (e, user) {
+      _this.setState({
+        open: true
+      });
+
+      console.log(user.id);
+
+      _this.setState({
+        currentUserName: user.username
+      });
+
+      console.log(user);
+
+      _this.props.users.push(user);
+
+      _this.setState({
+        users: _this.props.users
+      });
+    });
+
     _this.state = {
       last_edited_user: null,
       open: false,
-      setOpen: false
+      setOpen: false,
+      currentUser: '',
+      users: null,
+      last_updated_user: null,
+      currentUserName: ''
     };
     return _this;
   }
@@ -571,6 +604,9 @@ function (_Component) {
     value: function componentDidMount() {
       this.props.fetchUsers();
       console.log(this.props.users);
+      this.setState({
+        users: this.props.users
+      });
     }
   }, {
     key: "componentWillReceiveProps",
@@ -592,7 +628,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 91
         },
         __self: this
       }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__["Grid"], {
@@ -600,149 +636,150 @@ function (_Component) {
         sm: 8,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 92
         },
         __self: this
       }, this.props.users.map(function (user, i) {
-        return (// <Box component="span" display="block" p={1} m={1} bgcolor="background.paper">
-          //     block
-          // </Box>
-          __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_26__["default"], {
-            key: i,
-            component: "span",
-            display: "block",
-            p: 1,
-            m: 1,
-            bgcolor: "#f3e5f5",
+        return __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_26__["default"], {
+          key: i,
+          component: "span",
+          display: "block",
+          p: 1,
+          m: 1,
+          bgcolor: "#e0e0e0",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 97
+          },
+          __self: this
+        }, __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_26__["default"], {
+          p: 1,
+          m: 1,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 98
+          },
+          __self: this
+        }, "Name: ", user.name, " "), __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_26__["default"], {
+          p: 1,
+          m: 1,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 99
+          },
+          __self: this
+        }, "User Name: ", user.username), __jsx(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_24__["default"], {
+          color: "primary",
+          "aria-label": "edit",
+          onClick: function onClick(e) {
+            return _this2.updateUser(e, user);
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 101
+          },
+          __self: this
+        }, __jsx(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_22___default.a, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 102
+          },
+          __self: this
+        })), __jsx(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_16__["default"], {
+          open: _this2.state.open,
+          onClose: _this2.handleClose,
+          "aria-labelledby": "form-dialog-title",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 104
+          },
+          __self: this
+        }, __jsx(_material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_20__["default"], {
+          id: "form-dialog-title",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 105
+          },
+          __self: this
+        }, "change user name "), __jsx("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 106
+          },
+          __self: this
+        }, __jsx(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_18__["default"], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 107
+          },
+          __self: this
+        }, __jsx(_material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_19__["default"], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 108
+          },
+          __self: this
+        }, "user name:   ", _this2.state.currentUserName), __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_15__["default"], {
+          onChange: function onChange(e) {
+            return _this2.handleChange(e, user);
+          },
+          autoFocus: true,
+          margin: "dense",
+          fullWidth: true,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 111
+          },
+          __self: this
+        }))), __jsx(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_17__["default"], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 118
+          },
+          __self: this
+        }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_14__["default"], {
+          onClick: _this2.handleClose,
+          color: "primary",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 119
+          },
+          __self: this
+        }, "Cancel"), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_14__["default"], {
+          onClick: _this2.handleClose,
+          color: "primary",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 122
+          },
+          __self: this
+        }, "save"))), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_14__["default"], {
+          variant: "contained",
+          color: "secondary" //  className={classes.button}
+          ,
+          startIcon: __jsx(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_23___default.a, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 105
+              lineNumber: 131
             },
             __self: this
-          }, __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_26__["default"], {
-            p: 1,
-            m: 1,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 106
-            },
-            __self: this
-          }, "Name : ", user.name, " "), __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_26__["default"], {
-            p: 1,
-            m: 1,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 107
-            },
-            __self: this
-          }, "User Name : ", user.username), __jsx(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_24__["default"], {
-            color: "primary",
-            "aria-label": "edit",
-            onClick: _this2.handleClickOpen,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 110
-            },
-            __self: this
-          }, __jsx(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_22___default.a, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 111
-            },
-            __self: this
-          })), __jsx(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_16__["default"], {
-            open: _this2.state.open,
-            onClose: _this2.handleClose,
-            "aria-labelledby": "form-dialog-title",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 113
-            },
-            __self: this
-          }, __jsx(_material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_20__["default"], {
-            id: "form-dialog-title",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 114
-            },
-            __self: this
-          }, "user name "), __jsx("div", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 115
-            },
-            __self: this
-          }, __jsx(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_18__["default"], {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 116
-            },
-            __self: this
-          }, __jsx(_material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_19__["default"], {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 117
-            },
-            __self: this
-          }, "change user name"), __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_15__["default"], {
-            onChange: function onChange(e) {
-              return _this2.handleChange(e, user);
-            },
-            autoFocus: true,
-            margin: "dense",
-            value: user.username,
-            fullWidth: true,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 120
-            },
-            __self: this
-          }))), __jsx(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_17__["default"], {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 128
-            },
-            __self: this
-          }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_14__["default"], {
-            onClick: _this2.handleClose,
-            color: "primary",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 129
-            },
-            __self: this
-          }, "Cancel"), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_14__["default"], {
-            onClick: _this2.handleClose,
-            color: "primary",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 132
-            },
-            __self: this
-          }, "save"))), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_14__["default"], {
-            variant: "contained",
-            color: "secondary" //  className={classes.button}
-            ,
-            startIcon: __jsx(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_23___default.a, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 141
-              },
-              __self: this
-            }),
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 137
-            },
-            __self: this
-          }, "Delete"))
-        );
+          }),
+          onClick: function onClick(e) {
+            return _this2.deleteUser(e, user, i);
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 127
+          },
+          __self: this
+        }, "Delete"));
       })), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__["Grid"], {
         item: true,
         sm: true,
+        bgcolor: "e0e0e0",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 149
+          lineNumber: 140
         },
         __self: this
       }, __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_26__["default"], {
@@ -750,17 +787,17 @@ function (_Component) {
         display: "block",
         p: 1,
         m: 1,
-        bgcolor: "#f3e5f5",
+        bgcolor: "#e0e0e0",
         height: "98%",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 150
+          lineNumber: 141
         },
         __self: this
       }, __jsx(_userForm__WEBPACK_IMPORTED_MODULE_13__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 151
+          lineNumber: 142
         },
         __self: this
       }))));

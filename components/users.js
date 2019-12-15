@@ -29,7 +29,11 @@ class Users extends Component {
         this.state = {
             last_edited_user: null,
             open: false, 
-            setOpen: false
+            setOpen: false,
+            currentUser: '',
+            users: null,
+            last_updated_user: null,
+            currentUserName: ''
         }
 
     }
@@ -38,6 +42,7 @@ class Users extends Component {
     componentDidMount() {
         this.props.fetchUsers();
         console.log(this.props.users)
+         this.setState({ users: this.props.users })
     }   
     
     componentWillReceiveProps(nextProps){
@@ -54,41 +59,30 @@ class Users extends Component {
        console.log(this.state.last_edited_user)
 
     }
-    // deleteUser = (e, user, i) => {
-    //     const { users } = this.state
-    //     console.log(user.id)
-    //     users.splice(i, 1);
-    //     this.setState({ users: users })
-    // } 
+    deleteUser = (e, user, i) => {
+        console.log(i)
+        console.log(this.props.users)
+        this.props.users.splice(i, 1)
+        console.log(this.props.users)
+        this.setState({users: this.props.users })
+        console.log(this.state.users)
 
-    // handleCreatUser = (e) => {
-    //     //const { newUser } = this.state
-    //     this.setState({ [e.target.name] : e.target.value })
-        
-    //     const newUser = {
-    //         id: this.state.id,
-    //         name: this.state.name,
-    //         username: this.state.username
-    //     }
+    
+    } 
 
-    //     this.setState({ newUser : newUser })
-    // }
-
-    // buCreateUser = (event) => {
-    //     event.preventDefault();
-    //     const { newUser, users } = this.state
-    //     users.push(newUser)
-    //     this.setState({ users })
-    //     console.log(newUser)
-    //  }
-
-     handleClickOpen = () => {
-         this.setState({ open: true })
-      };
     
      handleClose = () => {
         this.setState({ open: false }) 
       };
+
+      updateUser = (e, user) => {
+        this.setState({ open: true })
+        console.log(user.id)
+        this.setState({ currentUserName: user.username })
+        console.log(user)
+        this.props.users.push(user)
+        this.setState({users: this.props.users })
+      }
 
     render() {
         return(
@@ -99,28 +93,24 @@ class Users extends Component {
                 
             {
                 this.props.users.map((user, i) => (
-                    // <Box component="span" display="block" p={1} m={1} bgcolor="background.paper">
-                    //     block
-                    // </Box>
-                    <Box  key={i} component="span" display="block" p={1} m={1} bgcolor="#f3e5f5">
-                    <Box  p={1} m={1}>Name : {user.name} </Box>
-                    <Box p={1} m={1}>User Name : {user.username}</Box>
-                    {/* <textarea onChange={(e) =>  this.handleChange(e, user) } value = { user.username}></textarea> */}
+                   
+                    <Box  key={i} component="span" display="block" p={1} m={1} bgcolor="#e0e0e0">
+                    <Box  p={1} m={1}>Name: {user.name} </Box>
+                    <Box p={1} m={1}>User Name: {user.username}</Box>
                     
-                <Fab color="primary" aria-label="edit" onClick={this.handleClickOpen}>
+                <Fab color="primary" aria-label="edit" onClick={(e) => this.updateUser(e, user)}>
                     <EditIcon />
                 </Fab>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">user name </DialogTitle>
+                    <DialogTitle id="form-dialog-title">change user name </DialogTitle>
                     <div >
                     <DialogContent>
                     <DialogContentText>
-                        change user name
+                        user name:   { this.state.currentUserName }
                     </DialogContentText>
                         <TextField onChange={(e) =>  this.handleChange(e, user) } 
                         autoFocus
-                        margin="dense"
-                        value = { user.username}
+                         margin="dense"
                         fullWidth
                     />
                     </DialogContent>
@@ -129,7 +119,7 @@ class Users extends Component {
                     <Button onClick={this.handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={this.handleClose} color="primary">
+                    <Button onClick={ this.handleClose} color="primary">
                         save
                     </Button>
                     </DialogActions>
@@ -139,6 +129,7 @@ class Users extends Component {
                     color="secondary"
                     //  className={classes.button}
                     startIcon={<DeleteIcon />}
+                    onClick = { (e)=> this.deleteUser(e, user, i) }
                     >
                     Delete
                     </Button>
@@ -146,8 +137,8 @@ class Users extends Component {
                             ))
                         } 
                         </Grid> 
-                        <Grid item sm>
-                        <Box   component="span" display="block" p={1} m={1} bgcolor="#f3e5f5" height= '98%'>
+                        <Grid item sm bgcolor="e0e0e0">
+                        <Box   component="span" display="block" p={1} m={1} bgcolor="#e0e0e0" height= '98%'>
                         <Userform   />
                         </Box>
                         </Grid>

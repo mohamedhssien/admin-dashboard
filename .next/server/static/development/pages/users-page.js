@@ -614,10 +614,15 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       console.log(this.state.last_edited_user);
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "handleClickOpen", () => {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "deleteUser", (e, user, i) => {
+      console.log(i);
+      console.log(this.props.users);
+      this.props.users.splice(i, 1);
+      console.log(this.props.users);
       this.setState({
-        open: true
+        users: this.props.users
       });
+      console.log(this.state.users);
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "handleClose", () => {
@@ -626,16 +631,38 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       });
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "updateUser", (e, user) => {
+      this.setState({
+        open: true
+      });
+      console.log(user.id);
+      this.setState({
+        currentUserName: user.username
+      });
+      console.log(user);
+      this.props.users.push(user);
+      this.setState({
+        users: this.props.users
+      });
+    });
+
     this.state = {
       last_edited_user: null,
       open: false,
-      setOpen: false
+      setOpen: false,
+      currentUser: '',
+      users: null,
+      last_updated_user: null,
+      currentUserName: ''
     };
   }
 
   componentDidMount() {
     this.props.fetchUsers();
     console.log(this.props.users);
+    this.setState({
+      users: this.props.users
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -653,7 +680,7 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 97
+        lineNumber: 91
       },
       __self: this
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__["Grid"], {
@@ -661,22 +688,19 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       sm: 8,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 98
+        lineNumber: 92
       },
       __self: this
-    }, this.props.users.map((user, i) => // <Box component="span" display="block" p={1} m={1} bgcolor="background.paper">
-    //     block
-    // </Box>
-    __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_20___default.a, {
+    }, this.props.users.map((user, i) => __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_20___default.a, {
       key: i,
       component: "span",
       display: "block",
       p: 1,
       m: 1,
-      bgcolor: "#f3e5f5",
+      bgcolor: "#e0e0e0",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 105
+        lineNumber: 97
       },
       __self: this
     }, __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_20___default.a, {
@@ -684,30 +708,30 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       m: 1,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106
+        lineNumber: 98
       },
       __self: this
-    }, "Name : ", user.name, " "), __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_20___default.a, {
+    }, "Name: ", user.name, " "), __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_20___default.a, {
       p: 1,
       m: 1,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 107
+        lineNumber: 99
       },
       __self: this
-    }, "User Name : ", user.username), __jsx(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_18___default.a, {
+    }, "User Name: ", user.username), __jsx(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_18___default.a, {
       color: "primary",
       "aria-label": "edit",
-      onClick: this.handleClickOpen,
+      onClick: e => this.updateUser(e, user),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 110
+        lineNumber: 101
       },
       __self: this
     }, __jsx(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_16___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111
+        lineNumber: 102
       },
       __self: this
     })), __jsx(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_10___default.a, {
@@ -716,49 +740,48 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       "aria-labelledby": "form-dialog-title",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 113
+        lineNumber: 104
       },
       __self: this
     }, __jsx(_material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_14___default.a, {
       id: "form-dialog-title",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 114
+        lineNumber: 105
       },
       __self: this
-    }, "user name "), __jsx("div", {
+    }, "change user name "), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 115
+        lineNumber: 106
       },
       __self: this
     }, __jsx(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_12___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 116
+        lineNumber: 107
       },
       __self: this
     }, __jsx(_material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_13___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 117
+        lineNumber: 108
       },
       __self: this
-    }, "change user name"), __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    }, "user name:   ", this.state.currentUserName), __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_9___default.a, {
       onChange: e => this.handleChange(e, user),
       autoFocus: true,
       margin: "dense",
-      value: user.username,
       fullWidth: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 120
+        lineNumber: 111
       },
       __self: this
     }))), __jsx(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_11___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 128
+        lineNumber: 118
       },
       __self: this
     }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -766,7 +789,7 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       color: "primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 129
+        lineNumber: 119
       },
       __self: this
     }, "Cancel"), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -774,7 +797,7 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       color: "primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 132
+        lineNumber: 122
       },
       __self: this
     }, "save"))), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -784,21 +807,23 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       startIcon: __jsx(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_17___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141
+          lineNumber: 131
         },
         __self: this
       }),
+      onClick: e => this.deleteUser(e, user, i),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 137
+        lineNumber: 127
       },
       __self: this
     }, "Delete")))), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__["Grid"], {
       item: true,
       sm: true,
+      bgcolor: "e0e0e0",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 149
+        lineNumber: 140
       },
       __self: this
     }, __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_20___default.a, {
@@ -806,17 +831,17 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       display: "block",
       p: 1,
       m: 1,
-      bgcolor: "#f3e5f5",
+      bgcolor: "#e0e0e0",
       height: "98%",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 150
+        lineNumber: 141
       },
       __self: this
     }, __jsx(_userForm__WEBPACK_IMPORTED_MODULE_7__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 151
+        lineNumber: 142
       },
       __self: this
     }))));
