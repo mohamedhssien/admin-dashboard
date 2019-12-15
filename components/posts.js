@@ -26,10 +26,7 @@ class Posts extends Component {
     } 
 
     render() {
-        return (
-            <Provider store={ store } >
-            <Layout>
-                
+        return (   
             
             <div> 
                     {
@@ -46,13 +43,13 @@ class Posts extends Component {
                         <button >save</button>
                 </Popup>
 
-                <button > delete user</button>
+                <button > delete post</button>
                 </div>    
                 ))
             }  
             </div>
-            </Layout>
-            </Provider>
+           
+         
         )
     }
 }
