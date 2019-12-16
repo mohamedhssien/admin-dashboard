@@ -1,6 +1,5 @@
 import { FETCH_USERS, NEW_USERS, LAST_UPDATE } from "../types";
 
-// import { last_updated_user } from "../../components/users";
 
 export function fetchUsers() {
     return function(dispatch){
@@ -17,7 +16,7 @@ export function fetchUsers() {
 
 export function CreateUsers(users) {
     return function(dispatch){
-        console.log('action called')
+        //console.log('action ')
         fetch('http://jsonplaceholder.typicode.com/users', {
             method: 'POST', 
             headers: {

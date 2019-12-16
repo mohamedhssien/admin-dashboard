@@ -16,6 +16,10 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
+    "/comments": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/posts-page": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"

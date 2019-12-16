@@ -31,4 +31,3 @@ class Userstst extends Component {
 
 export default Userstst
 
-// const store = createStore(allReducer)

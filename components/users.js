@@ -1,11 +1,8 @@
-import Layout from './layout'
 import React, { Component } from 'react'
-import Popup from "reactjs-popup"
 import { connect } from "react-redux";
-import PropTypes from 'prop-types'; 
+// import PropTypes from 'prop-types'; 
 import {  CreateUsers, fetchUsers } from "../redux/actions/userActions";
 import  Userform  from "./userForm";
-
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -41,13 +38,13 @@ class Users extends Component {
 
     componentDidMount() {
         this.props.fetchUsers();
-        console.log(this.props.users)
+        //console.log(this.props.users)
          this.setState({ users: this.props.users })
     }   
     
     componentWillReceiveProps(nextProps){
         if(nextProps.newUser){
-            console.log(nextProps.newUser)
+            //console.log(nextProps.newUser)
             this.props.users.unshift(nextProps.newUser)
         }
     }
@@ -105,14 +102,17 @@ class Users extends Component {
                     <DialogTitle id="form-dialog-title">change user name </DialogTitle>
                     <div >
                     <DialogContent>
-                    <DialogContentText>
-                        user name:   { this.state.currentUserName }
-                    </DialogContentText>
-                        <TextField onChange={(e) =>  this.handleChange(e, user) } 
-                        autoFocus
-                         margin="dense"
-                        fullWidth
-                    />
+                        <TextField onChange={(e) =>  this.handleChange(e, user)}
+                            autoFocus
+                            margin="dense"
+                            name="username"
+                            defaultValue={ this.state.currentUserName }
+                            type="text"
+                            fullWidth
+                           
+                        />
+
+                        
                     </DialogContent>
                     </div>
                     <DialogActions>
@@ -127,7 +127,6 @@ class Users extends Component {
                 <Button
                     variant="contained"
                     color="secondary"
-                    //  className={classes.button}
                     startIcon={<DeleteIcon />}
                     onClick = { (e)=> this.deleteUser(e, user, i) }
                     >
@@ -136,13 +135,13 @@ class Users extends Component {
                 </Box>    
                             ))
                         } 
-                        </Grid> 
-                        <Grid item sm bgcolor="e0e0e0">
-                        <Box   component="span" display="block" p={1} m={1} bgcolor="#e0e0e0" height= '98%'>
+                    </Grid> 
+                     <Grid item sm bgcolor="e0e0e0">
+                        <Box   component="span" display="block" p={1} m={1} bgcolor="#e0e0e0" height= '100%'>
                         <Userform   />
                         </Box>
-                        </Grid>
-                        </Grid>
+                     </Grid>
+                </Grid>
                                 
              
             
@@ -150,11 +149,6 @@ class Users extends Component {
     }
 }
 
-Users.PropTypes = {
-    fetchUsers: PropTypes.func.isRequired,
-    users: PropTypes.array.isRequired,
-    newUser: PropTypes.object 
-}
 
 const mapStateToProps = (state) => ({
     users: state.users.users,

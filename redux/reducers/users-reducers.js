@@ -1,6 +1,4 @@
 import { FETCH_USERS, NEW_USERS, LAST_UPDATE } from "../types";
-//import { actions } from "../actions/userActions";
-// import { last_updated_user } from "../../components/users";
 
 const initialState = {
     users: [],
@@ -11,13 +9,13 @@ const initialState = {
 export default function(state = initialState, action){
     switch(action.type) {
         case FETCH_USERS:
-            console.log('reducer')
+            //console.log('reducer')
          return {
              ...state,
              users: action.payload
          }
          case NEW_USERS :
-             console.log('ADASDASDSAD')
+             //console.log('ADASDASDSAD')
             return { 
                 ...state,
                 user: action.payload

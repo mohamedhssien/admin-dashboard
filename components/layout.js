@@ -1,36 +1,4 @@
 import Link from 'next/link'
-// import { AppBar, Toolbar, Typography,IconButton } from '@material-ui/core';
-
-// const Layout = (props) => ( 
-
-//     <div  style=  { {marginBottom: 20} } >
-
-//         <AppBar position="static">
-//         <Toolbar>
-//             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-//             <MenuIcon />
-//             </IconButton>
-//             <Typography variant="h6" className={classes.title}>
-//             News
-//             </Typography>
-//             <Button color="inherit">Login</Button>
-//         </Toolbar>
-//         </AppBar>
-        
-//         {/* <Link href="/comments"><a style=  { {padding: 20} }>manage Comments</a></Link>
-//         <Link href="/users-page"><a style=  { {padding: 20} }>manage Users</a></Link>
-//         <Link href="/posts-page"><a style=  { {padding: 20} }>manage Posts</a></Link> */}
-
-
-
-//         { props.children }
-
-//     </div>
-//  );
-
-//  export default Layout
-
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -58,19 +26,20 @@ const Layout = (props) => {
 
   return (
     <div>
-    <div  className={classes.root}>
+    <div  >
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton edge="start" color="inherit" aria-label="menu">
+            {/* not implement */}
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" >
 
-           <Link href="/comments"><Button color="inherit">manage Comments</Button></Link> 
            <Link href="/users-page"><Button color="inherit">manage Users</Button></Link>
            <Link href="/posts-page"><Button color="inherit">manage Posts</Button></Link> 
+           <Link href="/comments"><Button color="inherit">manage Comments</Button></Link> 
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
+          {/* <Button color="inherit">Login</Button>  not impement */}
         </Toolbar>
       </AppBar>
       
