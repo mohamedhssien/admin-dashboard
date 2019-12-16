@@ -26,32 +26,3 @@ export default function(state = initialState, action){
 }
 
 
-
-
-
-
-// import React, { Component } from 'react'
-
-// class Usersreducers extends Component {
-//     constructor(props) {
-//         super(props)
-
-//         this.state = {
-            
-//         }
-//     }
-//     static async getInitialProps(){
-//         const res = await fetch('http://jsonplaceholder.typicode.com/users');
-//         const data = await res.json();
-//         console.log(data)
-//         return { users: data }
-//     }
-
-//     // render() {
-//     //     return (
-            
-//     //     )
-//     // }
-// }
-
-// export default Usersreducers
