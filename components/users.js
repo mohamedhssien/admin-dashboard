@@ -16,6 +16,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
 import { Grid } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+// import List from '@material-ui/core/List'
+// import ListItem from '@material-ui/core/List'
+import { List, ListItemText, ListItem } from '@material-ui/core'
 
 
 
@@ -91,9 +94,14 @@ class Users extends Component {
             {
                 this.props.users.map((user, i) => (
                    
-                    <Box  key={i} component="span" display="block" p={1} m={1} bgcolor="#e0e0e0">
-                    <Box  p={1} m={1}>Name: {user.name} </Box>
-                    <Box p={1} m={1}>User Name: {user.username}</Box>
+                    <List  key = {i}>
+                   <Box  p={1} m={1} bgcolor="#f9fbe7">  <ListItemText  
+                        primary = "name" secondary = {user.name} 
+                    /> </Box>
+
+                    <Box  p={1} m={1} bgcolor="#f9fbe7"> <ListItemText   
+                       primary = "First Name" secondary = {user.username} 
+                    /> </Box>
                     
                 <Fab color="primary" aria-label="edit" onClick={(e) => this.updateUser(e, user)}>
                     <EditIcon />
@@ -132,7 +140,7 @@ class Users extends Component {
                     >
                     Delete
                     </Button>
-                </Box>    
+                </List>   
                             ))
                         } 
                     </Grid> 

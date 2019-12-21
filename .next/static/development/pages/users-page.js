@@ -462,6 +462,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 
 
+ // import List from '@material-ui/core/List'
+// import ListItem from '@material-ui/core/List'
+
 
 
 var Users =
@@ -568,7 +571,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88
+          lineNumber: 91
         },
         __self: this
       }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__["Grid"], {
@@ -576,39 +579,52 @@ function (_Component) {
         sm: 8,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 92
         },
         __self: this
       }, this.props.users.map(function (user, i) {
-        return __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_23__["default"], {
+        return __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__["List"], {
           key: i,
-          component: "span",
-          display: "block",
-          p: 1,
-          m: 1,
-          bgcolor: "#e0e0e0",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 94
+            lineNumber: 97
           },
           __self: this
         }, __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_23__["default"], {
           p: 1,
           m: 1,
+          bgcolor: "#f9fbe7",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 95
+            lineNumber: 98
           },
           __self: this
-        }, "Name: ", user.name, " "), __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_23__["default"], {
+        }, "  ", __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__["ListItemText"], {
+          primary: "name",
+          secondary: user.name,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 98
+          },
+          __self: this
+        }), " "), __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_23__["default"], {
           p: 1,
           m: 1,
+          bgcolor: "#f9fbe7",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 96
+            lineNumber: 102
           },
           __self: this
-        }, "User Name: ", user.username), __jsx(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_21__["default"], {
+        }, " ", __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__["ListItemText"], {
+          primary: "First Name",
+          secondary: user.username,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 102
+          },
+          __self: this
+        }), " "), __jsx(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_21__["default"], {
           color: "primary",
           "aria-label": "edit",
           onClick: function onClick(e) {
@@ -616,13 +632,13 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 98
+            lineNumber: 106
           },
           __self: this
         }, __jsx(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_19___default.a, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 99
+            lineNumber: 107
           },
           __self: this
         })), __jsx(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -631,26 +647,26 @@ function (_Component) {
           "aria-labelledby": "form-dialog-title",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 101
+            lineNumber: 109
           },
           __self: this
         }, __jsx(_material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_17__["default"], {
           id: "form-dialog-title",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 102
+            lineNumber: 110
           },
           __self: this
         }, "change user name "), __jsx("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 103
+            lineNumber: 111
           },
           __self: this
         }, __jsx(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_15__["default"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 104
+            lineNumber: 112
           },
           __self: this
         }, __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_12__["default"], {
@@ -665,13 +681,13 @@ function (_Component) {
           fullWidth: true,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 105
+            lineNumber: 113
           },
           __self: this
         }))), __jsx(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_14__["default"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 118
+            lineNumber: 126
           },
           __self: this
         }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -679,7 +695,7 @@ function (_Component) {
           color: "primary",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 119
+            lineNumber: 127
           },
           __self: this
         }, "Cancel"), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -687,7 +703,7 @@ function (_Component) {
           color: "primary",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 122
+            lineNumber: 130
           },
           __self: this
         }, "save"))), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -696,7 +712,7 @@ function (_Component) {
           startIcon: __jsx(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_20___default.a, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 130
+              lineNumber: 138
             },
             __self: this
           }),
@@ -705,7 +721,7 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 127
+            lineNumber: 135
           },
           __self: this
         }, "Delete"));
@@ -715,7 +731,7 @@ function (_Component) {
         bgcolor: "e0e0e0",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 139
+          lineNumber: 147
         },
         __self: this
       }, __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_23__["default"], {
@@ -727,13 +743,13 @@ function (_Component) {
         height: "100%",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 148
         },
         __self: this
       }, __jsx(_userForm__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141
+          lineNumber: 149
         },
         __self: this
       }))));
@@ -33002,7 +33018,7 @@ var yellow = {
 /*!*****************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/index.js ***!
   \*****************************************************/
-/*! exports provided: colors, AppBar, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, styleFunction, Breadcrumbs, Button, ButtonBase, ButtonGroup, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Chip, CircularProgress, ClickAwayListener, Collapse, Container, CssBaseline, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Drawer, ExpansionPanel, ExpansionPanelActions, ExpansionPanelDetails, ExpansionPanelSummary, Fab, Fade, FilledInput, FormControl, useFormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, GridList, GridListTile, GridListTileBar, Grow, Hidden, Icon, IconButton, Input, InputAdornment, InputBase, InputLabel, LinearProgress, Link, List, ListItem, ListItemAvatar, ListItemIcon, ListItemSecondaryAction, ListItemText, ListSubheader, Menu, MenuItem, MenuList, MobileStepper, Modal, ModalManager, NativeSelect, NoSsr, OutlinedInput, Paper, Popover, Popper, Portal, Radio, RadioGroup, RootRef, Select, Slide, Slider, Snackbar, SnackbarContent, Step, StepButton, StepConnector, StepContent, StepIcon, StepLabel, Stepper, SvgIcon, SwipeableDrawer, Switch, Tab, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TableRow, TableSortLabel, Tabs, TextField, TextareaAutosize, Toolbar, Tooltip, Typography, useMediaQuery, useScrollTrigger, withMobileDialog, withWidth, Zoom, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, easing, duration, formatMs, isString, isNumber, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider, isWidthUp, isWidthDown */
+/*! exports provided: colors, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, easing, duration, formatMs, isString, isNumber, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider, AppBar, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, styleFunction, Breadcrumbs, Button, ButtonBase, ButtonGroup, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Chip, CircularProgress, ClickAwayListener, Collapse, Container, CssBaseline, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Drawer, ExpansionPanel, ExpansionPanelActions, ExpansionPanelDetails, ExpansionPanelSummary, Fab, Fade, FilledInput, FormControl, useFormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, GridList, GridListTile, GridListTileBar, Grow, Hidden, Icon, IconButton, Input, InputAdornment, InputBase, InputLabel, LinearProgress, Link, List, ListItem, ListItemAvatar, ListItemIcon, ListItemSecondaryAction, ListItemText, ListSubheader, Menu, MenuItem, MenuList, MobileStepper, Modal, ModalManager, NativeSelect, NoSsr, OutlinedInput, Paper, Popover, Popper, Portal, Radio, RadioGroup, RootRef, Select, Slide, Slider, Snackbar, SnackbarContent, Step, StepButton, StepConnector, StepContent, StepIcon, StepLabel, Stepper, SvgIcon, SwipeableDrawer, Switch, Tab, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TableRow, TableSortLabel, Tabs, TextField, TextareaAutosize, Toolbar, Tooltip, Typography, useMediaQuery, useScrollTrigger, withMobileDialog, withWidth, Zoom, isWidthUp, isWidthDown */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59829,25 +59845,7 @@ var initialState = {
     default:
       return state;
   }
-}); // import React, { Component } from 'react'
-// class Usersreducers extends Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//         }
-//     }
-//     static async getInitialProps(){
-//         const res = await fetch('http://jsonplaceholder.typicode.com/users');
-//         const data = await res.json();
-//         console.log(data)
-//         return { users: data }
-//     }
-//     // render() {
-//     //     return (
-//     //     )
-//     // }
-// }
-// export default Usersreducers
+});
 
 /***/ }),
 
@@ -59895,7 +59893,7 @@ var NEW_POST = 'NEW_POST';
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!*****************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fusers-page&absolutePagePath=C%3A%5CUsers%5Csitekey%5CDesktop%5Cadmin-dashboard%5Cpages%5Cusers-page.js ***!
   \*****************************************************************************************************************************************************/
@@ -59918,5 +59916,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=users-page.js.map

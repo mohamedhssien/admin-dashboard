@@ -14,6 +14,7 @@
   "dependencies": {
     "@material-ui/core": "^4.8.0",
     "@material-ui/icons": "^4.5.1",
+    "@material/list": "^4.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.1.5",
     "prop-types": "^15.7.2",

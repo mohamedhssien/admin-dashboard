@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -539,6 +539,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+ // import List from '@material-ui/core/List'
+// import ListItem from '@material-ui/core/List'
+
 
 
 class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
@@ -619,7 +622,7 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 88
+        lineNumber: 91
       },
       __self: this
     }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__["Grid"], {
@@ -627,50 +630,63 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       sm: 8,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89
+        lineNumber: 92
       },
       __self: this
-    }, this.props.users.map((user, i) => __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_17___default.a, {
+    }, this.props.users.map((user, i) => __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__["List"], {
       key: i,
-      component: "span",
-      display: "block",
-      p: 1,
-      m: 1,
-      bgcolor: "#e0e0e0",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 94
+        lineNumber: 97
       },
       __self: this
     }, __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_17___default.a, {
       p: 1,
       m: 1,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 95
-      },
-      __self: this
-    }, "Name: ", user.name, " "), __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_17___default.a, {
-      p: 1,
-      m: 1,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 96
-      },
-      __self: this
-    }, "User Name: ", user.username), __jsx(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_15___default.a, {
-      color: "primary",
-      "aria-label": "edit",
-      onClick: e => this.updateUser(e, user),
+      bgcolor: "#f9fbe7",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 98
       },
       __self: this
+    }, "  ", __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__["ListItemText"], {
+      primary: "name",
+      secondary: user.name,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 98
+      },
+      __self: this
+    }), " "), __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_17___default.a, {
+      p: 1,
+      m: 1,
+      bgcolor: "#f9fbe7",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102
+      },
+      __self: this
+    }, " ", __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__["ListItemText"], {
+      primary: "First Name",
+      secondary: user.username,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102
+      },
+      __self: this
+    }), " "), __jsx(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_15___default.a, {
+      color: "primary",
+      "aria-label": "edit",
+      onClick: e => this.updateUser(e, user),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 106
+      },
+      __self: this
     }, __jsx(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_13___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 99
+        lineNumber: 107
       },
       __self: this
     })), __jsx(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -679,26 +695,26 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       "aria-labelledby": "form-dialog-title",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 101
+        lineNumber: 109
       },
       __self: this
     }, __jsx(_material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_11___default.a, {
       id: "form-dialog-title",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 102
+        lineNumber: 110
       },
       __self: this
     }, "change user name "), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 103
+        lineNumber: 111
       },
       __self: this
     }, __jsx(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_9___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 104
+        lineNumber: 112
       },
       __self: this
     }, __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6___default.a, {
@@ -711,13 +727,13 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       fullWidth: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 105
+        lineNumber: 113
       },
       __self: this
     }))), __jsx(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_8___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 118
+        lineNumber: 126
       },
       __self: this
     }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -725,7 +741,7 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       color: "primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 119
+        lineNumber: 127
       },
       __self: this
     }, "Cancel"), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -733,7 +749,7 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       color: "primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 122
+        lineNumber: 130
       },
       __self: this
     }, "save"))), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -742,14 +758,14 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       startIcon: __jsx(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_14___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 130
+          lineNumber: 138
         },
         __self: this
       }),
       onClick: e => this.deleteUser(e, user, i),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 127
+        lineNumber: 135
       },
       __self: this
     }, "Delete")))), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__["Grid"], {
@@ -758,7 +774,7 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       bgcolor: "e0e0e0",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 139
+        lineNumber: 147
       },
       __self: this
     }, __jsx(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_17___default.a, {
@@ -770,13 +786,13 @@ class Users extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       height: "100%",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 140
+        lineNumber: 148
       },
       __self: this
     }, __jsx(_userForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 141
+        lineNumber: 149
       },
       __self: this
     }))));
@@ -2920,25 +2936,7 @@ const initialState = {
     default:
       return state;
   }
-}); // import React, { Component } from 'react'
-// class Usersreducers extends Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//         }
-//     }
-//     static async getInitialProps(){
-//         const res = await fetch('http://jsonplaceholder.typicode.com/users');
-//         const data = await res.json();
-//         console.log(data)
-//         return { users: data }
-//     }
-//     // render() {
-//     //     return (
-//     //     )
-//     // }
-// }
-// export default Usersreducers
+});
 
 /***/ }),
 
@@ -2988,7 +2986,7 @@ const NEW_POST = 'NEW_POST';
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!***********************************!*\
   !*** multi ./pages/users-page.js ***!
   \***********************************/
